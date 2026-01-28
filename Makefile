@@ -8,6 +8,11 @@ clean: Makefile.rocq
 Makefile.rocq: _CoqProject
 	rocq makefile -f _CoqProject -o Makefile.rocq
 
+imp.ast: all
+
+imp.mlf: imp.ast
+	peregrine ocaml imp.ast -o imp.mlf
+
 force _CoqProject Makefile: ;
 
 %: Makefile.rocq force
